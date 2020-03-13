@@ -57,12 +57,12 @@ cr.plugins_.IOSimulator = function(runtime)
 
         // BIND KEYBOARD EVENT
         if (!this.runtime.isDomFree) {
-            window.addEventListener('keydown', function (e) { self.checkCaps(e) });
+            window.addEventListener('keydown', function (event) { self.checkCaps(event) });
         }
     };
 
     // CUSTOM FUNCTION FOR KEYDOWN CALLBACK TO OBTAIN CAPS LOCK STATE
-    instanceProto.checkCaps = function (e)
+    instanceProto.checkCaps = function (event)
     {
         var caps = e.getModifierState && e.getModifierState('CapsLock');
         this.capsLock = (caps ? 1 : 0);
@@ -75,7 +75,7 @@ cr.plugins_.IOSimulator = function(runtime)
     {
         // RELEASE KEYBOARD EVENT
         if (!this.runtime.isDomFree) {
-            window.removeEventListener('keydown', function (e) { self.checkCaps(e) });
+            window.removeEventListener('keydown', function (event) { self.checkCaps(event) });
         }
 
         // MOUSE CLICK
